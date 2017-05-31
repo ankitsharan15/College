@@ -1,0 +1,43 @@
+package com.example.coviam.demo.controller;
+
+import com.example.coviam.demo.entity.BuildingEntity;
+import com.example.coviam.demo.service.BuildingService;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
+
+
+/**
+ *
+ * @author ankit
+ */
+@RestController
+public class BuildingController {
+    
+    @Autowired
+    BuildingService buildingService;
+
+    @RequestMapping (value = "/insert/{department}/{buildingName}/{inaguratedBy}/{numberOfLabs}{numberOfClassRooms}", method = RequestMethod.GET)
+    public BuildingEntity insert(@PathVariable String department, @PathVariable String buildingName, @PathVariable String inaguratedBy,@PathVariable String numberOfLabs, @PathVariable String numberOfClassRooms){
+        BuildingEntity myObj = new BuildingEntity(department,buildingName,inaguratedBy,numberOfLabs,numberOfClassRooms);
+        return buildingService.save(college);
+    }
+
+    @RequestMapping (value = "/update/{department}/{buildingName}/{inaguratedBy}/{numberOfLabs}{numberOfClassRooms}", method = RequestMethod.GET)
+    public BuildingEntity insert(@PathVariable String department, @PathVariable String buildingName, @PathVariable String inaguratedBy,@PathVariable String numberOfLabs, @PathVariable String numberOfClassRooms){
+        BuildingEntity myObj = new BuildingEntity(department,buildingName,inaguratedBy,numberOfLabs,numberOfClassRooms);
+        return buildingService.save(college);
+    }
+
+    @RequestMapping (value = "/get/{department}")
+    public BuildingEntity get(@PathVariable String department){
+        return buildingService.findOne(department);
+    }
+
+    @RequestMapping (value = "/update/{department}/{buildingName}/{inaguratedBy}/{numberOfLabs}{numberOfClassRooms}", method = RequestMethod.GET)
+    public BuildingEntity insert(@PathVariable String department, @PathVariable String buildingName, @PathVariable String inaguratedBy,@PathVariable String numberOfLabs, @PathVariable String numberOfClassRooms){
+        BuildingEntity myObj = new BuildingEntity(department,buildingName,inaguratedBy,numberOfLabs,numberOfClassRooms);
+        return buildingService.delete(myObj);
+    }
+    
+}
